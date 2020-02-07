@@ -2,6 +2,8 @@ PFLAGS = `pythia8-config --cxxflags --libs`
 
 RFLAGS = `root-config --cflags --libs`
 
+CFLAGS = -Wall
+
 PROGRAMS = lyz_pythia recursion_pythia
 
 all: $(PROGRAMS)
@@ -9,9 +11,12 @@ all: $(PROGRAMS)
 clean:
 	rm -f $(PROGRAMS)
 
+debug: CFLAGS += -g
+debug: $(PROGRAMS)
+
 lyz_pythia: lyz_pythia.C
-	g++ -o lyz_pythia lyz_pythia.C -Wall $(PFLAGS) $(RFLAGS)
+	g++ -o lyz_pythia lyz_pythia.C $(CFLAGS) $(PFLAGS) $(RFLAGS)
 
 recursion_pythia: recursion_pythia.C
-	g++ -o recursion_pythia recursion_pythia.C -Wall $(PFLAGS) $(RFLAGS)
+	g++ -o recursion_pythia recursion_pythia.C $(CFLAGS) $(PFLAGS) $(RFLAGS)
 
