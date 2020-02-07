@@ -73,7 +73,7 @@ int main()
 
 
 
-  for (int iEvent = 0; iEvent < 50; ++iEvent)
+  for (int iEvent = 0; iEvent < 5000; ++iEvent)
     {
       // --- for the generic formulas ---------
       for(int h=0;h<maxHarmonic;h++)
@@ -187,6 +187,11 @@ int main()
       // --- fill the generating function histograms
       // ---
       int multbin = mult/10;
+      if ( multbin >= multbins )
+        {
+          cout << "Skipping event with multiplicity " << mult << ", event index " << iEvent << endl;
+          continue;
+        }
       for ( int rbin = 0; rbin < rbins; ++rbin )
         {
           double r = (double(rbin)/rbins);
