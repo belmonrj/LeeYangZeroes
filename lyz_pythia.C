@@ -40,6 +40,8 @@ int main()
   pythia.readString("Beams:eCM = 8000.");
   pythia.readString("HardQCD:all = on");
   pythia.readString("PhaseSpace:pTHatMin = 20.");
+  pythia.readString("Random:setSeed = on");
+  pythia.readString("Random:seed = 0");
   pythia.init();
 
   // --- histograms
