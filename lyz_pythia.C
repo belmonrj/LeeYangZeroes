@@ -97,7 +97,7 @@ int main()
           for ( int j = 0; j < thetabins; ++j )
             {
               genfunS[i][j] = TComplex(0.0,0.0); // initialize to 0, calculate directly
-              genfunP[i][j] = TComplex(1.0,1.0); // initialize to 1, calcualte via product
+              genfunP[i][j] = TComplex(1.0,0.0); // initialize to 1, calcualte via product
             }
         }
 
