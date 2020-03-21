@@ -11,3 +11,7 @@ recursion_pythia.C | This code is secondary for now, it uses the Recursion algor
 ## Papers directory
 Some of the key papers of interest to understand the theory behind the method
 
+### Additional information
+
+Random seeds in pythia: http://home.thep.lu.se/Pythia/pythia82html/RandomNumberSeed.html
+
