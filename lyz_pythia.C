@@ -65,30 +65,32 @@ int main()
 
 
 
-  for (Int_t i = 0; i < multbins; i++){
-    for (Int_t j = 0; j < thetabins; j++){
-      LeeYangHistosS[i][j] = new TProfile(Form("LeeYangS_mult%d_theta%d",i,j),"",rbins,0,1,-1e10,1e10);
-      LeeYangHistosP[i][j] = new TProfile(Form("LeeYangP_mult%d_theta%d",i,j),"",rbins,0,1,-1e10,1e10);
+  for ( int i = 0; i < multbins; ++i )
+    {
+      for ( int j = 0; j < thetabins; ++j )
+        {
+          LeeYangHistosS[i][j] = new TProfile(Form("LeeYangS_mult%d_theta%d",i,j),"",rbins,0,1,-1e10,1e10);
+          LeeYangHistosP[i][j] = new TProfile(Form("LeeYangP_mult%d_theta%d",i,j),"",rbins,0,1,-1e10,1e10);
+        }
     }
-  }
 
 
 
 
-  for (int iEvent = 0; iEvent < 5000; ++iEvent)
+  for ( int iEvent = 0; iEvent < 5000; ++iEvent )
     {
       // --- for the generic formulas ---------
-      for(int h=0;h<maxHarmonic;h++)
+      for ( int h = 0; h < maxHarmonic; ++h )
         {
-          for(int w=0;w<maxPower;w++)
+          for ( int w = 0; w < maxPower; ++w )
             {
-              Qvector[h][w] = TComplex(0.,0.);
-            } //  for(int p=0;p<maxPower;p++)
+              Qvector[h][w] = TComplex(0.0,0.0);
+            } //  for ( int p = 0; p < maxPower; ++p )
           for ( int i = 0; i < thetabins; ++i )
             {
               Qtheta[h][i] = TComplex(0.0,0.0);
             }
-        } // for(int h=0;h<maxHarmonic;h++)
+        } // for ( int h = 0; h < maxHarmonic; ++h )
       // --------------------------------------
       for ( int i = 0; i < rbins; ++i )
         {
@@ -112,13 +114,13 @@ int main()
       double Q2y = 0;
       //int heta = 0; // this is extremely bad
 
-      for (int i = 0; i < event.size(); ++i)
+      for ( int i = 0; i < event.size(); ++i )
         {
           // Particle short notation
           Particle& p = event[i];
 
           // count all charged particles
-          if (p.isFinal() && p.isCharged()) ++nCharged;
+          if ( p.isFinal() && p.isCharged() ) ++nCharged;
 
           // Apply simple, particle level, cuts.
 
@@ -151,13 +153,13 @@ int main()
           // ---------------------------
           // --- calculate the Q-vectors
           // ---
-          for(int h=0;h<maxHarmonic;h++)
+          for ( int h = 0; h < maxHarmonic; ++h )
             {
-              for(int w=0;w<maxPower;w++)
+              for ( int w = 0; w < maxPower; ++w )
                 {
                   //if(bUseWeights){wPhiToPowerP = pow(wPhi,p);} // no weights for us...
                   Qvector[h][w] += TComplex(cos(h*phi),sin(h*phi));
-                } //  for(int w=0;w<maxPower;w++)
+                } //  for ( int w = 0; w < maxPower; ++w )
               for ( int thetabin = 0; thetabin < thetabins; ++thetabin )
                 {
                   float theta_width = (2*pi)/thetabins;
