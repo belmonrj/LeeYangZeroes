@@ -14,6 +14,9 @@ clean:
 debug: CFLAGS += -g
 debug: $(PROGRAMS)
 
+phenix: CFLAGS += -std=c++11
+phenix: $(PROGRAMS)
+
 lyz_pythia: lyz_pythia.C
 	g++ -o lyz_pythia lyz_pythia.C $(CFLAGS) $(PFLAGS) $(RFLAGS)
 
