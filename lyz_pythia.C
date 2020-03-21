@@ -9,6 +9,9 @@
 // this is a copy with very minor modification by Ron Belmont
 // Also edited to by Aidan Lytle to produce an eta distribution
 
+#include <thread>
+#include <chrono>
+
 #include "TROOT.h"
 #include "TH1D.h"
 #include "TProfile.h"
@@ -32,8 +35,44 @@ TComplex Qtheta[maxHarmonic][thetabins];
 TComplex genfunS[rbins][thetabins]; // sum
 TComplex genfunP[rbins][thetabins]; // product
 
-int main()
+
+
+int main(int argc, char *argv[])
 {
+
+  // --- preamble
+
+  cout << "Hello!  I hope you are having a nice day, and are healthy and safe in the time of COVID-19..." << endl;
+
+  cout << endl;
+
+  cout << "Processing with arguments ";
+  for ( int i = 0; i < argc; ++i )
+    {
+      cout << argv[i] << " ";
+    }
+  cout << endl;
+
+  std::this_thread::sleep_for (std::chrono::seconds(3));
+
+  cout << "Sleeping for a few seconds so you can read this " << endl;
+
+  std::this_thread::sleep_for (std::chrono::seconds(3));
+
+  // ---
+
+  int sequence = 0;
+  if ( argc > 1 ) sequence = atoi(argv[1]);
+
+  int nevents = 10; // could make this an argument
+  if ( argc > 2 ) nevents = atoi(argv[2]);
+
+  int seed = 0;
+  if ( argc > 3 ) sequence = atoi(argv[3]);
+
+  cout << "Sequence " << sequence << endl;
+  cout << "Number of events " << nevents << endl;
+  cout << "Random seed " << seed << endl;
 
   // Generator. Process selection. LHC initialization.
   Pythia pythia;
@@ -41,7 +80,8 @@ int main()
   pythia.readString("HardQCD:all = on");
   pythia.readString("PhaseSpace:pTHatMin = 20.");
   pythia.readString("Random:setSeed = on");
-  pythia.readString("Random:seed = 0");
+  //pythia.readString("Random:seed = 0");
+  pythia.readString(Form("Random:seed = %d",seed));
   pythia.init();
 
   // --- histograms
@@ -77,7 +117,7 @@ int main()
 
 
 
-  for ( int iEvent = 0; iEvent < 5000; ++iEvent )
+  for ( int iEvent = 0; iEvent < nevents; ++iEvent )
     {
       // --- for the generic formulas ---------
       for ( int h = 0; h < maxHarmonic; ++h )
@@ -226,7 +266,7 @@ int main()
 
 
   //Tfile for I/O stuff
-  TFile* HistFile = new TFile("Output_LYZ.root","recreate");
+  TFile* HistFile = new TFile(Form("Output_LYZ_%d.root",sequence),"recreate");
   HistFile->cd();
   heta->Write();
   heta_vec->Write();
