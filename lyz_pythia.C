@@ -266,7 +266,7 @@ int main(int argc, char *argv[])
 
 
   //Tfile for I/O stuff
-  TFile* HistFile = new TFile(Form("Output_LYZ_%d.root",sequence),"recreate");
+  TFile* HistFile = new TFile(Form("output/Output_LYZ_%d.root",sequence),"recreate");
   HistFile->cd();
   heta->Write();
   heta_vec->Write();
