@@ -14,7 +14,7 @@ clean:
 debug: CFLAGS += -g
 debug: $(PROGRAMS)
 
-phenix: CFLAGS += -std=c++11
+phenix: CFLAGS += -std=c++11 -m32
 phenix: $(PROGRAMS)
 
 lyz_pythia: lyz_pythia.C
