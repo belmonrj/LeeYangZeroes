@@ -1,18 +1,13 @@
 Universe        = vanilla
 Notification    = Complete
 Executable      = /phenix/u/belmonrj/LeeYangZeroes/phenix_lyz.csh
-Requirements    = CPU_Speed >= 1
-Rank            = CPU_Speed
-Priority        = +1
 GetEnv          = False
 Initialdir      = /phenix/u/belmonrj/LeeYangZeroes
-Error           = /phenix/u/belmonrj/LeeYangZeroes/log/job_$(Process).err
-Log             = /phenix/u/belmonrj/LeeYangZeroes/log/job_$(Process).log
-Output          = /phenix/u/belmonrj/LeeYangZeroes/log/job_$(Process).out
-+Experiment     = "phenix"
-+Job_Type       = "cas"
+Error           = /phenix/u/belmonrj/LeeYangZeroes/logs/job_$(Process).err
+Log             = /phenix/u/belmonrj/LeeYangZeroes/logs/job_$(Process).log
+Output          = /phenix/u/belmonrj/LeeYangZeroes/logs/job_$(Process).out
 
-Arguments = $(Process) 1000 $(Process)
+Arguments = $(Process) 1000
 
 Queue 10
 
