@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
   if ( argc > 2 ) nevents = atoi(argv[2]);
 
   int seed = 0;
-  if ( argc > 3 ) sequence = atoi(argv[3]);
+  if ( argc > 3 ) seed = atoi(argv[3]);
 
   cout << "Sequence " << sequence << endl;
   cout << "Number of events " << nevents << endl;

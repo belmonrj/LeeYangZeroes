@@ -7,7 +7,7 @@ Error           = /phenix/u/belmonrj/LeeYangZeroes/logs/job_$(Process).err
 Log             = /phenix/u/belmonrj/LeeYangZeroes/logs/job_$(Process).log
 Output          = /phenix/u/belmonrj/LeeYangZeroes/logs/job_$(Process).out
 
-Arguments = $(Process) 1000
+Arguments = $(Process) 1000 $(Process)
 
 Queue 10
 
