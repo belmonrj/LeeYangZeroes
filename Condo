@@ -9,5 +9,5 @@ Output          = /phenix/u/belmonrj/LeeYangZeroes/logs/job_$(Process).out
 
 Arguments = $(Process) 1000 $(Process)
 
-Queue 10
+Queue 1000
 
