@@ -1,7 +1,7 @@
 Universe        = vanilla
 Notification    = Complete
 Executable      = /phenix/u/belmonrj/LeeYangZeroes/phenix_lyz.csh
-GetEnv          = False
+GetEnv          = True
 Initialdir      = /phenix/u/belmonrj/LeeYangZeroes
 Error           = /phenix/u/belmonrj/LeeYangZeroes/logs/job_$(Process).err
 Log             = /phenix/u/belmonrj/LeeYangZeroes/logs/job_$(Process).log
